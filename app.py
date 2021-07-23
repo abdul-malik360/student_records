@@ -14,6 +14,11 @@ init_sqlite_db()
 app = Flask(__name__)
 
 
+@app.route('/')
+def welcome():
+    return render_template('welcome.html')
+
+
 @app.route('/enter-new/')
 def enter_new_student():
     return render_template('student.html')
