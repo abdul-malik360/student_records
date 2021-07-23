@@ -43,6 +43,16 @@ def add_new_record():
             return render_template('results.html', msg=msg)
 
 
+@app.route('/show-student-records/')
+def show_students_records():
+
+    with sqlite3.connect('database.db') as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM students")
+        results = cur.fetchall()
+    return jsonify(results)
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run()
